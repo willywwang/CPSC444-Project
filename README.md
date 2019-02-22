@@ -2,7 +2,7 @@
 Mobile application for CPSC 444
 
 ## Software
-* Ionic 3.9.2
+* Ionic 4.10.2
 * Angular 5
 * Node 8.15.0
 * NPM 6.4.1
