@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
+    <ion-item lines="none">
+      <ion-avatar (click)="visitProfile()">
+        <img src="../../assets/photos/jeffrey-parkhouse.jpg">
+      </ion-avatar>
+      <span style="padding-left:15px">Explore</span>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+	<ion-card *ngFor="let mentor of mentors">
+		<div style="height:250px;overflow:hidden">
+			<img src="{{mentor.img}}" style="filter: blur(2px) opacity(80%);">
+		</div>
+		<div style="position:absolute;top:0%;width:100%;text-align:center">
+			<div style="text-align: right">
+				<p style="color:black;font-weight:750;font-family:'Verla Round', sans-serif;padding-right:15px">{{mentor.match}}</p>
+			</div>
+			<div style="padding-left:15px;padding-right:15px">
+				<h2 style="color:black;font-weight:750;font-family: 'Varela Round', sans-serif;">{{mentor.name}}</h2>
+				<h3 style="color:black;font-weight:500;font-family: 'Varela Round', sans-serif;">{{mentor.job}}</h3>
+				<p style="color:black;font-weight:250;font-family: 'Varela Round', sans-serif;">{{mentor.bio}}</p>
+			</div>
+		</div>
+	</ion-card>
+</ion-content>

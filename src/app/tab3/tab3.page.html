@@ -1,9 +1,32 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-item lines="none">
+			<ion-avatar (click)="visitProfile()">
+				<img src="../../assets/photos/jeffrey-parkhouse.jpg">
+			</ion-avatar>
+			<span style="padding-left:15px">Messages</span>
+		</ion-item>
+	</ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+	<ion-searchbar placeholder="Search Messenger"></ion-searchbar>
+	<ion-list>
+		<ion-item style="padding-top: 5px" *ngFor="let mentor of mentors">
+			<ion-avatar slot="start" style="height:50px;width:50px;">
+				<img src="{{mentor.img}}">
+			</ion-avatar>
+			<ion-label>
+				<div style="width:100%;display:inline-flex">
+					<div style="float:left;width:80%">
+						<h2>{{mentor.name}}</h2>
+					</div>
+					<div style="float:right;text-align:right;width:20%">
+						<p>{{mentor.time}}</p>
+					</div>
+				</div>
+				<p>{{mentor.message}}</p>
+			</ion-label>
+		</ion-item>
+	</ion-list>
+</ion-content>
