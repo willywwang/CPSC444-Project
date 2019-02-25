@@ -80,7 +80,8 @@ export class Tab2Page {
 			name: 'Nelson Power',
 			job: 'Software Engineer at Hootsuite',
 			bio: 'I have been coding for 8 years and have experience with both mobile and web development. I previously worked at companies such as Google and Amazon as a full stack engineer and have mentored several interns in the past.',
-			img: '../../assets/photos/nelson-power.jpg'
+			img: '../../assets/photos/nelson-power.jpg',
+			match: '97%'
 		},
 		{
 			name: 'Phanuel Smith',
