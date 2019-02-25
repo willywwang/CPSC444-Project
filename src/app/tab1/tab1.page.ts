@@ -14,8 +14,6 @@ export class Tab1Page {
 		let currentDate: Date = new Date();
 		currentDate.setDate(currentDate.getDate() + 2);
 		this.formattedDate = this.pipe.transform(currentDate, 'EEEE, MMM d, y, h:mm a');
-
-		console.log(this.formattedDate);
 	}
 
 	visitProfile = function() {
