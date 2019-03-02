@@ -44,6 +44,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'profile/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: '../profile/profile.module#ProfileModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

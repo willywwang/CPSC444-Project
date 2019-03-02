@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-searchbar placeholder="{{profile.name}}"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row style="height:75px">
+			<ion-col size="3">
+				<ion-avatar style="padding-left:10px">
+					<img style="border-radius:50%;width:90px!important;height:90px!important;max-width:none!important" src="{{profile.img}}"/>
+				</ion-avatar>
+			</ion-col>
+			<ion-col>
+				<div style="padding-left:18px\">
+					<div style="display:inline-flex">
+						<span style="margin:0;font-weight:600">{{profile.name}}</span>
+						<ion-icon name="checkmark-circle"></ion-icon>
+					</div>
+					<br/>
+					<span style="margin:0;">{{profile.job}}</span>]
+					<br/>
+					<span style="margin:0;font-size:0.8em">{{profile.bio}}</span>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>
