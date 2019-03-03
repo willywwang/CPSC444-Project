@@ -153,8 +153,6 @@ export class ProfileComponent implements OnInit {
 
 		var user = JSON.parse(localStorage.getItem('user'));
 		this.members.push(user);
-
-		console.log(user);
 	}
 
 	ngOnInit() {
@@ -215,6 +213,10 @@ export class ProfileComponent implements OnInit {
 
 	cancelEdit() {
 		this.isEditing = false;
+	}
+
+	save() {
+		
 	}
 
 }
