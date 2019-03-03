@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 	profile: any;
 	editProfile: any;
 	members: Array<any> = [];
+	filteredMembers: Array<any> = [];
 	isEditing: Boolean = false;
 	searchFocused: Boolean = false;
 	searchedName: String;
@@ -198,11 +199,11 @@ export class ProfileComponent implements OnInit {
 		});
 
 		if (tempMember) {
-			routeMember(tempMember);
+			this.routeMember(tempMember);
 		}
 	}
 
-	editProfile() {
+	updateProfile() {
 		this.isEditing = true;
 		this.editProfile = JSON.parse(JSON.stringify(this.profile));
 	}
