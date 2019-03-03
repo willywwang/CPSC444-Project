@@ -1,30 +1,235 @@
-<ion-header>
-  <ion-toolbar>
-  	<ion-searchbar placeholder="{{profile.name}}"></ion-searchbar>
-  </ion-toolbar>
+<ion-header *ngIf="!isEditing">	
+	<ion-toolbar>
+		<ion-buttons slot="start" *ngIf="!searchFocused">
+			<ion-back-button text=""></ion-back-button>
+		</ion-buttons>
+		<div>
+			<ion-searchbar placeholder="Search" 
+			[(ngModel)]="searchedName" 
+			(ionFocus)="searchFocus()"
+			(ionChange)="searchChanged()"
+			(keyup.escape)="searchLost()"
+			(keyup.enter)="search()"></ion-searchbar>
+		</div>
+		<ion-buttons slot="end" style="padding-right:5px" *ngIf="searchFocused" (click)="searchLost()">
+			<ion-icon name="close-circle-outline" size="large"></ion-icon>
+		</ion-buttons>
+		<ion-buttons slot="end" style="padding-right:5px" *ngIf="id == 1 && !searchFocused" (click)="editProfile()">
+			<ion-icon name="create" size="large"></ion-icon>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
+<ion-list *ngIf="searchFocused" style="border-bottom:1px solid #e5e3e3;margin:0">
+	<ion-item *ngFor="let member of filteredMembers" style="padding-top:5px" lines="none" (click)="routeMember(member)">
+		<ion-avatar slot="start" style="height:25px;width:25px;">
+			<img src="{{member.img}}">
+		</ion-avatar>
+		<ion-label>
+			<span>{{member.name}}</span>
+		</ion-label>
+	</ion-item>
+</ion-list>
 
-<ion-content>
+<ion-content (click)="searchLost()" *ngIf="!isEditing">
 	<ion-grid>
-		<ion-row style="height:75px">
+		<ion-row style="height:90px">
 			<ion-col size="3">
 				<ion-avatar style="padding-left:10px">
 					<img style="border-radius:50%;width:90px!important;height:90px!important;max-width:none!important" src="{{profile.img}}"/>
 				</ion-avatar>
 			</ion-col>
 			<ion-col>
-				<div style="padding-left:18px\">
-					<div style="display:inline-flex">
-						<span style="margin:0;font-weight:600">{{profile.name}}</span>
-						<ion-icon name="checkmark-circle"></ion-icon>
+				<div style="padding-left:18px;height:90px;display:table-cell;vertical-align:middle">
+					<div>
+						<span style="margin:0;font-weight:600;vertical-align:middle;font-size:1.3em">{{profile.name}}</span>
+						<ion-icon name="checkmark-circle" style="color:#d4a737;font-size:1.3em;vertical-align:middle;padding-bottom:3px;padding-left:2px" *ngIf="profile.verified"></ion-icon>
 					</div>
+					<span style="margin:0;">{{profile.job}}</span>
 					<br/>
-					<span style="margin:0;">{{profile.job}}</span>]
-					<br/>
-					<span style="margin:0;font-size:0.8em">{{profile.bio}}</span>
+					<span style="margin:0;">{{profile.education}}</span>
 				</div>
 			</ion-col>
 		</ion-row>
+		<ion-row style="padding-top:5px;padding-left:10px;padding-bottom:5px">
+			<ion-col size="12">
+				<span style="margin:0;font-size:0.8em">{{profile.bio}}</span>
+			</ion-col>
+		</ion-row>
+		<div class="seperator"></div>
+		<ion-row style="padding-left:10px;padding-top:5px">
+			<ion-col size="12">
+				<span style="font-weight:550">Work Experience</span>
+			</ion-col>
+			<ion-list *ngIf="profile.jobs && profile.jobs.length > 0" style="width: 100%;margin-bottom:0">
+				<ion-item style="padding-top: 5px" *ngFor="let job of profile.jobs">
+					<ion-avatar slot="start" style="height:50px;width:50px;">
+						<img src="{{job.img}}">
+					</ion-avatar>
+					<ion-label style="line-height:1.1">
+						<span style="font-size:0.9em;font-weight:550">{{job.title}}</span>
+						<br/>
+						<span style="font-size:0.8em;">{{job.company}}</span>
+						<br/>
+						<span style="font-size:0.8em">{{job.dates}}</span>
+					</ion-label>
+				</ion-item>
+			</ion-list>
+			<div style="width:100%" *ngIf="!profile.jobs || profile.jobs.length == 0">
+				<ion-col size="12">No work experience listed</ion-col>
+			</div>
+			<div style="height:10px;width:100%"></div>
+			<ion-col size="12">
+				<span style="font-weight:550;">Skills</span>
+			</ion-col>
+			<ion-row *ngIf="profile.skills && profile.skills.length > 0" >
+				<ion-col size="4" *ngFor="let skill of profile.skills" style="padding:0">
+					<ul style="margin:0;padding-left:20px">
+						<li style="font-size:0.9em">{{skill}}</li>
+					</ul>
+				</ion-col>
+			</ion-row>
+			<div style="width:100%" *ngIf="!profile.skills || profile.skills.length == 0">
+				<ion-col size="12">No skills listed</ion-col>
+			</div>
+			<div style="height:10px;width:100%"></div>
+			<ion-col size="12">
+				<span style="font-weight:550">Interests</span>
+			</ion-col>
+			<ion-row *ngIf="profile.interests && profile.interests.length > 0" >
+				<ion-col size="4" *ngFor="let interest of profile.interests" style="padding:0">
+					<ul style="margin:0;padding-left:20px">
+						<li style="font-size:0.9em">{{interest}}</li>
+					</ul>
+				</ion-col>
+			</ion-row>
+			<div style="width:100%" *ngIf="!profile.interests || profile.interests.length == 0">
+				<ion-col size="12">No interests listed</ion-col>
+			</div>
+		</ion-row>
 	</ion-grid>
-
 </ion-content>
+
+<ion-content (click)="searchLost()" *ngIf="isEditing">
+	<ion-grid>
+		<ion-row style="height:90px;padding-top:5px">
+			<ion-avatar style="width:90px;height:95px;margin-left:auto;margin-right:auto;">
+				<img style="border-radius:50%;width:90px!important;height:90px!important;max-width:none!important" src="{{profile.img}}"/>
+			</ion-avatar>
+		</ion-row>
+		<ion-row style="padding-top:15px">
+			<ion-item lines="full" style="width:100%;border-top:1px solid #c2c2c2">
+				<ion-label style="font-weight:550">Full Name</ion-label>
+				<ion-input [(ngModel)]="editProfile.name" placeholder="Full Name"></ion-input>
+			</ion-item>
+			<ion-item lines="full" style="width:100%">
+				<ion-label style="font-weight:550">Current Occupation</ion-label>
+				<ion-input [(ngModel)]="editProfile.job" placeholder="Current Occupation"></ion-input>
+			</ion-item>
+			<ion-item lines="full" style="width:100%">
+				<ion-label style="font-weight:550">Education</ion-label>
+				<ion-input [(ngModel)]="editProfile.education" placeholder="Education"></ion-input>
+			</ion-item>
+			<ion-item lines="full" style="width:100%">
+				<ion-label style="font-weight:550;padding-right:5px">Bio</ion-label>
+				<ion-textarea [(ngModel)]="editProfile.bio" style="height:100px"></ion-textarea>
+			</ion-item>
+		</ion-row>
+		<ion-row style="padding-left:10px;padding-top:5px">
+			<ion-col size="12">
+				<span style="font-weight:550;float:left">Work Experience</span>
+				<a><span style="float:right;padding-right:18px">Add</span></a>
+			</ion-col>
+			<ion-list *ngIf="editProfile.jobs && editProfile.jobs.length > 0" style="width: 100%;margin-bottom:0">
+				<ion-item style="padding-top: 5px" *ngFor="let job of profile.jobs">
+					<ion-avatar slot="start" style="height:50px;width:50px;">
+						<img src="{{job.img}}">
+					</ion-avatar>
+					<ion-label style="line-height:1.1">
+						<span style="font-size:0.9em;font-weight:550">{{job.title}}</span>
+						<br/>
+						<span style="font-size:0.8em;">{{job.company}}</span>
+						<br/>
+						<span style="font-size:0.8em">{{job.dates}}</span>
+					</ion-label>
+					<ion-avatar slot="end">
+						<ion-icon name="create" size="large"></ion-icon>
+					</ion-avatar>
+				</ion-item>
+			</ion-list>
+			<div style="width:100%" *ngIf="!editProfile.jobs || editProfile.jobs.length == 0">
+				<ion-col size="12">No work experience listed</ion-col>
+			</div>
+			<div style="height:20px;width:100%"></div>
+			<ion-col size="12">
+				<span style="font-weight:550;">Skills</span>
+			</ion-col>
+			<ion-row *ngIf="editProfile.skills && editProfile.skills.length > 0" style="width:100%">
+				<ion-list style="width:100%;margin:0">
+					<ion-item *ngFor="let skill of editProfile.skills" lines="full" style="width: 100%">
+						<ion-label>
+							<span>{{skill}}</span>
+						</ion-label>
+						<ion-avatar slot="end">
+							<ion-icon name="close-circle-outline" size="large"></ion-icon>
+						</ion-avatar>
+					</ion-item>
+					<ion-item lines="full" style="width: 100%;" color="primary">
+						<ion-label>
+							<span>Add Skill</span>
+						</ion-label>
+						<ion-avatar slot="end">
+							<ion-icon name="add-circle-outline" size="large"></ion-icon>
+						</ion-avatar>
+					</ion-item>
+				</ion-list>
+			</ion-row>
+			<div style="width:100%" *ngIf="!editProfile.skills || editProfile.skills.length == 0">
+				<ion-col size="12">No skills listed</ion-col>
+			</div>
+			<div style="height:20px;width:100%"></div>
+			<ion-col size="12">
+				<span style="font-weight:550">Interests</span>
+			</ion-col>
+			<ion-row *ngIf="editProfile.interests && editProfile.interests.length > 0" style="width:100%">
+				<ion-list style="width:100%;margin:0">
+					<ion-item *ngFor="let interest of editProfile.interests" lines="full" style="width: 100%">
+						<ion-label>
+							<span>{{interest}}</span>
+						</ion-label>
+						<ion-avatar slot="end">
+							<ion-icon name="close-circle-outline" size="large"></ion-icon>
+						</ion-avatar>
+					</ion-item>
+					<ion-item lines="full" style="width: 100%;" color="primary">
+						<ion-label>
+							<span>Add Interest</span>
+						</ion-label>
+						<ion-avatar slot="end">
+							<ion-icon name="add-circle-outline" size="large"></ion-icon>
+						</ion-avatar>
+					</ion-item>
+				</ion-list>
+			</ion-row>
+			<div style="width:100%" *ngIf="!editProfile.interests || editProfile.interests.length == 0">
+				<ion-col size="12">No interests listed</ion-col>
+			</div>
+		</ion-row>
+	</ion-grid>
+</ion-content>
+
+<ion-footer *ngIf="isEditing">
+	<ion-toolbar>
+		<ion-buttons>
+			<ion-button expand="block" fill="solid" size="default" color="#0077B5" style="margin-left:auto;width:33%;background-color:#0077B5!important;border-radius:0.25rem">
+				<ion-icon name="logo-linkedin"></ion-icon>
+				&nbsp;Connect&nbsp;
+			</ion-button>
+			<ion-button expand="block" fill="solid" size="default" color="#459758" style="width:33%;background-color:#459758!important;border-radius:0.25rem" (click)="save()">
+				<ion-icon name="save"></ion-icon>&nbsp;&nbsp;Save&nbsp;&nbsp;
+			</ion-button>
+			<ion-button expand="block" fill="solid" size="default" color="#d7636e" style="margin-right:auto;width:33%;background-color:#d7636e!important;border-radius:0.25rem" (click)="cancelEdit()">
+				<ion-icon name="close-circle-outline"></ion-icon>&nbsp;Cancel&nbsp;
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>

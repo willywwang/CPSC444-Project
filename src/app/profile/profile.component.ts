@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'app-profile',
@@ -9,17 +10,38 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
 	id: number;
 	profile: any;
+	editProfile: any;
 	members: Array<any> = [];
+	isEditing: Boolean = false;
+	searchFocused: Boolean = false;
+	searchedName: String;
 	private sub: any;
 
-	constructor(private route: ActivatedRoute) {
+	constructor(private router: Router, private route: ActivatedRoute) {
 		this.members = [
 		{	
 			id: 1,
 			name: 'Jeffrey Parkhouse',
 			job: 'BCs Student at UBC',
+			education: 'University of British Columbia',
 			bio: 'I\'m a 4th year computer science student at UBC who specializes in full stack development.',
-			img: '../../assets/photos/jeffrey-parkhouse.jpg'
+			img: '../../assets/photos/jeffrey-parkhouse.jpg',
+			verified: true,
+			skills: ['HTML', 'CSS', 'JavaScript', 'Java', 'C++', 'C', 'Android', 'IntelliJ'],
+			interests: ['Coding', 'Software', 'Hiking', 'Hackathons', 'Mobile', 'Web', 'Database'],
+			jobs: [
+			{	
+				img: '../../assets/photos/ubc-logo.png',
+				title: 'Full Stack Developer Co-op',
+				company: 'UBC',
+				dates: 'Sept 2018 - Dec 2018'
+			},
+			{
+				img: '../../assets/photos/hootsuite-logo.png',
+				title: 'Software Developer Intern',
+				company: 'Hootsuite',
+				dates: 'Jan 2017 - Aug 2017'
+			}]
 		},
 		{	
 			id: 2,
@@ -134,11 +156,59 @@ export class ProfileComponent implements OnInit {
 			this.id = +params['id'];
 
 			this.profile = this.members.find((member) => {
-				return member.id = this.id;
+				return member.id === this.id;
 			});
 
-			console.log(this.profile);
+			this.searchedName = this.profile.name;
+			this.searchChanged();
 		});
+	}
+
+	searchFocus() {
+		this.searchFocused = true;
+	}
+
+	searchLost() {
+		this.searchFocused = false;
+	}
+
+	searchChanged() {
+		this.filteredMembers = this.members;
+
+		if (this.searchedName.trim() == '') {
+			return;
+		}
+
+		this.filteredMembers = this.members.filter((member) => {
+			if (member.name.toLowerCase().includes(this.searchedName.toLowerCase())) {
+				return true;
+			}
+
+			return false;
+		});
+	}
+
+	routeMember(member: any) {
+		this.router.navigate(['/profile', member.id]);
+	}
+
+	search() {
+		var tempMember = this.members.find((member) => {
+			return member.name.toLowerCase() == this.searchedName.toLowerCase();
+		});
+
+		if (tempMember) {
+			routeMember(tempMember);
+		}
+	}
+
+	editProfile() {
+		this.isEditing = true;
+		this.editProfile = JSON.parse(JSON.stringify(this.profile));
+	}
+
+	cancelEdit() {
+		this.isEditing = false;
 	}
 
 }
