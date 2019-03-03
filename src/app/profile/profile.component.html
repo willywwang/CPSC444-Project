@@ -81,7 +81,7 @@
 			<ion-col size="12">
 				<span style="font-weight:550;">Skills</span>
 			</ion-col>
-			<ion-row *ngIf="profile.skills && profile.skills.length > 0" >
+			<ion-row *ngIf="profile.skills && profile.skills.length > 0" style="width:100%">
 				<ion-col size="4" *ngFor="let skill of profile.skills" style="padding:0">
 					<ul style="margin:0;padding-left:20px">
 						<li style="font-size:0.9em">{{skill}}</li>
@@ -140,7 +140,7 @@
 				<a><span style="float:right;padding-right:18px">Add</span></a>
 			</ion-col>
 			<ion-list *ngIf="editProfile.jobs && editProfile.jobs.length > 0" style="width: 100%;margin-bottom:0">
-				<ion-item style="padding-top: 5px" *ngFor="let job of profile.jobs">
+				<ion-item style="padding-top: 5px" *ngFor="let job of editProfile.jobs">
 					<ion-avatar slot="start" style="height:50px;width:50px;">
 						<img src="{{job.img}}">
 					</ion-avatar>

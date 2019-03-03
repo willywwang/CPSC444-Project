@@ -150,6 +150,11 @@ export class ProfileComponent implements OnInit {
 			bio: '',
 			img: '../../assets/photos/sofia-gomez.jpg'
 		}];
+
+		var user = JSON.parse(localStorage.getItem('user'));
+		this.members.push(user);
+
+		console.log(user);
 	}
 
 	ngOnInit() {

@@ -2,13 +2,25 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  {
+    path: '', loadChildren: './auth/signup.module#SignupModule'
+  },
+  { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   {
     path: 'profile/:id',
     children: [
       {
         path: '',
         loadChildren: './profile/profile.module#ProfileModule'
+      }
+    ]
+  },
+  {
+    path: 'chat/:id',
+    children: [
+      {
+        path: '',
+        loadChildren: './chat/chat.module#ChatModule'
       }
     ]
   }

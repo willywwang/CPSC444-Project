@@ -1,9 +1,9 @@
 <ion-header>
 	<ion-toolbar>
 		<ion-item lines="none">
-			<ion-avatar routerLink="/profile/1">
-				<img src="../../assets/photos/jeffrey-parkhouse.jpg">
-			</ion-avatar>
+	      <ion-avatar routerLink="/profile/99">
+	        <img src="../../assets/photos/user.png">
+	      </ion-avatar>
 			<span style="padding-left:15px">Messages</span>
 		</ion-item>
 	</ion-toolbar>
@@ -12,7 +12,7 @@
 <ion-content>
 	<ion-searchbar placeholder="Search Messenger"></ion-searchbar>
 	<ion-list>
-		<ion-item style="padding-top: 5px" *ngFor="let mentor of mentors">
+		<ion-item style="padding-top: 5px" *ngFor="let mentor of mentors" (click)="openChat(mentor)">
 			<ion-avatar slot="start" style="height:50px;width:50px;">
 				<img src="{{mentor.img}}">
 			</ion-avatar>
