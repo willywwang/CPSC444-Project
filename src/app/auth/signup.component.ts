@@ -63,7 +63,6 @@ export class SignupComponent implements OnInit {
 	}
 
 	save() {
-		console.log('asdf');
 		localStorage.setItem('user', JSON.stringify(this.profile));
 		this.router.navigate(['/tabs']);
 	}

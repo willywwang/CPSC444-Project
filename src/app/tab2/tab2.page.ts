@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class Tab2Page {
 	public mentors: Array<any> = [];
+	mentor: any;
+	index: number = 0;
 	mode: number = 1;
 
 	constructor(private router: Router) {
@@ -142,6 +144,8 @@ export class Tab2Page {
 			bio: '',
 			img: '../../assets/photos/sofia-gomez.jpg'
 		}];
+
+		this.mentor = this.mentors[this.index];
 	}
 
 	switchMode() {
@@ -154,5 +158,18 @@ export class Tab2Page {
 
 	goToMember(member: any) {
 		this.router.navigate(['/profile', member.id]);
+	}
+
+	switchMentors() {
+		this.index++;
+
+		if (this.index == this.mentors.length) {
+			this.mentor = {};
+			this.mentor.name = "No more mentors can be found at the moment.";
+			this.mentor.id = -1;
+			return;
+		}
+
+		this.mentor = this.mentors[this.index];
 	}
 }

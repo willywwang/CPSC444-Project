@@ -1,18 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-item lines="none">
-      <ion-avatar routerLink="/profile/99">
-        <img src="../../assets/photos/user.png">
-      </ion-avatar>
-      <span style="padding-left:15px">Explore</span>
-    </ion-item>
-	  <ion-buttons slot="end">
-	    <ion-button (click)="switchMode()">
-	      <ion-icon slot="icon-only" name="switch"></ion-icon>
-	    </ion-button>
-	</ion-buttons>
+	<ion-toolbar>
+		<ion-item lines="none">
+			<ion-avatar routerLink="/profile/99">
+				<img src="../../assets/photos/user.png">
+			</ion-avatar>
+			<span style="padding-left:15px">Explore</span>
+		</ion-item>
+		<ion-buttons slot="end">
+			<ion-button (click)="switchMode()">
+				<ion-icon slot="icon-only" name="switch"></ion-icon>
+			</ion-button>
+		</ion-buttons>
 
-  </ion-toolbar>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="mode == 1">
@@ -36,7 +36,30 @@
 </ion-content>
 <!-- checkmark x -->
 <ion-content *ngIf="mode==2">
-	<span>Mode 2</span>
+	<ion-card style="transform:translateY(50%);">
+		<div style="height:225px;overflow:hidden">
+			<img src="{{mentor.img}}" style="filter: blur(2px) opacity(80%);">
+		</div>
+		<div style="position:absolute;top:0%;width:100%;text-align:center">
+			<div style="padding-left:15px;padding-right:15px">
+				<h2 style="color:black;font-weight:750;font-family: 'Varela Round', sans-serif;margin-bottom:0">{{mentor.name}}</h2>
+				<h3 style="color:black;font-weight:500;font-family: 'Varela Round', sans-serif;margin-top:5px">{{mentor.job}}</h3>
+				<span style="height:100px;color:black;font-weight:250;font-family: 'Varela Round', sans-serif;">
+					{{mentor.bio}}
+				</span>
+			</div>
+		</div>
+		<ion-card-content style="padding: 0" *ngIf="mentor.id != -1">
+			<ion-buttons style="padding: 10px">
+				<ion-button style="width:50%;border-right:1px solid #e5e3e3">
+					<ion-icon name="checkmark"></ion-icon>
+				</ion-button>
+				<ion-button style="width:50%" (click)="switchMentors()">
+					<ion-icon name="close"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+		</ion-card-content>
+	</ion-card>
 </ion-content>
 <!-- show 6 circles drag and drop -->
 <ion-content *ngIf="mode==3">
