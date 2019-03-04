@@ -132,11 +132,14 @@ export class ChatComponent implements OnInit {
 			img: '../../assets/photos/bruce-willis.jpg'
 		}];
 
+		var user = JSON.parse(localStorage.getItem('user'));
+		this.members.push(user);
+
 		this.messages = [
 		{
 			id: 17,
 			chatId: 0,
-			from: 1,
+			from: 99,
 			text: 'Hi Pierre, would you be free to meet up on Saturday?'
 		},
 		{

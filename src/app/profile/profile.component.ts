@@ -216,7 +216,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	save() {
-		
+		localStorage.setItem('user', JSON.stringify(this.editProfile));
 	}
 
 }
