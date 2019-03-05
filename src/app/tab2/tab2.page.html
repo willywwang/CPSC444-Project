@@ -63,6 +63,42 @@
 </ion-content>
 <!-- show 6 circles drag and drop -->
 <ion-content *ngIf="mode==3">
-	<span>Mode 3</span>
+	<ion-grid style="transform:translateY(12%)">
+		<ion-row>
+			<ion-row dragula="MENTORS" [(dragulaModel)]="subsetMentors" style="width:100%">
+				<ion-col size="6" *ngFor="let mentor of subsetMentors">
+					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto">
+						<img src="{{mentor.img}}"/>
+					</ion-avatar>
+				</ion-col>
+			</ion-row>
+			<ion-row style="width:100%">
+				<ion-col size="6" ng-if="!finishedSearch" dragula="MENTORS" [(dragulaModel)]="favorites" class="no-drag">
+					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto;border:1px solid #FCAF17;text-align:center">
+						<img style="width:50px;height:50px;position:relative;top:29%" src="../../assets/photos/star.png"/>
+					</ion-avatar>
+				</ion-col>
+				<ion-col size="6" ng-if="!finishedSearch" dragula="MENTORS" [(dragulaModel)]="garbage" class="no-drag">
+					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto;border:1px solid #9A9B9D;text-align:center">
+						<img style="width:50px;height:50px;position:relative;top:29%" src="../../assets/photos/trash.png"/>
+					</ion-avatar>
+				</ion-col>
+			</ion-row>
+		</ion-row>
+	</ion-grid>
+</ion-content>
+<ion-content *ngIf="finishedSearch && mode == 3" style="text-align:center">
+	<span>Favorited Mentors</span>
+	<ion-grid style="transform:translateY(12%)">
+		<ion-row>
+			<ion-row>
+				<ion-col size="6" *ngFor="let mentor of favorites">
+					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto">
+						<img src="{{mentor.img}}"/>
+					</ion-avatar>
+				</ion-col>
+			</ion-row>
+		</ion-row>
+	</ion-grid>
 </ion-content>
 

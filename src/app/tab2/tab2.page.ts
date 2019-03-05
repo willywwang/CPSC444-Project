@@ -1,18 +1,26 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+	selector: 'app-tab2',
+	templateUrl: 'tab2.page.html',
+	styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
 	public mentors: Array<any> = [];
+	subsetMentors: Array<any> =[];
 	mentor: any;
 	index: number = 0;
+	sliceIndex: number = 0;
 	mode: number = 1;
+	subs = new Subscription();
+	favorites: Array<any> = [];
+	garbage: Array<any> = [];
+	finishedSearch: boolean = false;
 
-	constructor(private router: Router) {
+	constructor(private router: Router, private dragulaService: DragulaService) {
 		this.mentors = [
 		{	
 			id: 1,
@@ -146,6 +154,32 @@ export class Tab2Page {
 		}];
 
 		this.mentor = this.mentors[this.index];
+		this.subsetMentors = this.mentors.slice(this.sliceIndex, this.sliceIndex+4);
+		this.sliceIndex += 4;
+
+		this.dragulaService.createGroup('MENTORS', {
+			moves: function (el: any, container: any, handle: any): any {
+				if (container.classList.contains('no-drag')) {
+					return false;
+				}
+
+				return true;
+			}
+		});
+
+		this.subs.add(this.dragulaService.drop("MENTORS")
+			.subscribe(({ name, el, target, source, sibling }) => {
+				if (this.sliceIndex < 16 && this.subsetMentors == 0) {
+					this.subsetMentors = this.mentors.slice(this.sliceIndex, this.sliceIndex+4);
+					this.sliceIndex += 4;
+
+					console.log(this.favorites, this.garbage);
+				} else if (this.sliceIndex >= 16 && this.subsetMentors == 0) {
+					this.finishedSearch = true;
+					console.log(this.favorites);
+				}
+			})
+		);
 	}
 
 	switchMode() {
