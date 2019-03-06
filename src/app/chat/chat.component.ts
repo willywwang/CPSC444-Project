@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit {
 	messages: Array<any>;
 	id: Number;
 	member: any;
+	messageText: string;
 	private sub: any;
 
 	constructor(private route: ActivatedRoute) {
@@ -148,6 +149,13 @@ export class ChatComponent implements OnInit {
 			from: 17,
 			text: 'Yes, let\'s meet at Starbucks at 2PM.'
 		}];
+
+		var sentMessages = sessionStorage.getItem('messages');
+
+		if (sentMessages) {
+			this.messages = this.messages.concat(JSON.parse(sentMessages));
+			this.messages.splice(0, 2);
+		}
 	}
 
 	ngOnInit() {
@@ -162,6 +170,23 @@ export class ChatComponent implements OnInit {
 				return message.id === this.id;
 			});
 		});
+	}
+
+	sendMessage() {
+		var newMessage: any = {
+			id: this.id,
+			chatId: this.messages[this.messages.length - 1].chatId + 1,
+			from: 99,
+			text: this.messageText
+		};
+
+		this.messages.push(newMessage);
+
+		sessionStorage.setItem('messages', JSON.stringify(this.messages));
+
+		this.messageText = "";
+
+		this.filteredMessages.push(newMessage);
 	}
 
 }

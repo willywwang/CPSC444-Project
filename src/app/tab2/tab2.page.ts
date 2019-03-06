@@ -169,14 +169,11 @@ export class Tab2Page {
 
 		this.subs.add(this.dragulaService.drop("MENTORS")
 			.subscribe(({ name, el, target, source, sibling }) => {
-				if (this.sliceIndex < 16 && this.subsetMentors == 0) {
+				if (this.sliceIndex < 16 && this.subsetMentors.length == 0) {
 					this.subsetMentors = this.mentors.slice(this.sliceIndex, this.sliceIndex+4);
 					this.sliceIndex += 4;
-
-					console.log(this.favorites, this.garbage);
-				} else if (this.sliceIndex >= 16 && this.subsetMentors == 0) {
+				} else if (this.sliceIndex >= 16 && this.subsetMentors.length == 0) {
 					this.finishedSearch = true;
-					console.log(this.favorites);
 				}
 			})
 		);
