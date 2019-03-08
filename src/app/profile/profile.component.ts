@@ -159,7 +159,12 @@ export class ProfileComponent implements OnInit {
 
 		var user = JSON.parse(localStorage.getItem('user'));
 		this.loggedInUser = parseInt(sessionStorage.getItem('loggedInId'));
-		this.members.push(user);
+
+		if (this.loggedInUser == 1) {
+			this.members[0] = user;
+		} else {
+			this.members.push(user);
+		}
 	}
 
 	ngOnInit() {
