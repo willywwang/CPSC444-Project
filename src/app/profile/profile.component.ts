@@ -156,7 +156,8 @@ export class ProfileComponent implements OnInit {
 		}];
 
 		var user = JSON.parse(localStorage.getItem('user'));
-		this.loggedInUser = parseInt(localStorage.getItem('loggedInId'));
+		this.loggedInUser = parseInt(sessionStorage.getItem('loggedInId'));
+		console.log(sessionStorage.getItem('loggedInId'));
 		this.members.push(user);
 	}
 
