@@ -12,7 +12,7 @@ export class Tab4Page {
 	loggedInUser: number;
 	
 	constructor(private router: Router) {
-		this.loggedInUser = sessionStorage.getItem('loggedInId');
+		this.loggedInUser = parseInt(sessionStorage.getItem('loggedInId'));
 		this.route = '/profile/' + this.loggedInUser;
 		this.img = this.loggedInUser == 1 ? '../../assets/photos/jeffrey-parkhouse.jpg' : '../../assets/photos/user.png';
 	}

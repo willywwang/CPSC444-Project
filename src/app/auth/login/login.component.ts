@@ -18,7 +18,10 @@ export class LoginComponent implements OnInit {
 	login() {
 		this.loginError = false;
 		var unparsedUser = localStorage.getItem('user');
-		var user = {};
+		var user = {
+			username: '',
+			password: ''
+		};
 		var that = this;
 
 		if (unparsedUser) {
@@ -26,14 +29,14 @@ export class LoginComponent implements OnInit {
 		}
 
 		if (this.username == 'testuser') {
-			sessionStorage.setItem('loggedInId', 1);
+			sessionStorage.setItem('loggedInId', '1');
 
 			setTimeout(function() {
 				that.router.navigate(['/tabs']);
 			}, 500);
 			return;
 		} else if (this.username == user.username && this.password == user.password) {
-			sessionStorage.setItem('loggedInId', 99);
+			sessionStorage.setItem('loggedInId', '99');
 			setTimeout(function() {
 				that.router.navigate(['/tabs']);
 			}, 500);

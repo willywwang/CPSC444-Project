@@ -156,7 +156,7 @@ export class Tab2Page {
 			img: '../../assets/photos/sofia-gomez.jpg'
 		}];
 
-		this.loggedInUser = sessionStorage.getItem('loggedInId');
+		this.loggedInUser = parseInt(sessionStorage.getItem('loggedInId'));
 		this.mentors = this.mentors.filter((mentor) => {
 			return mentor.id != this.loggedInUser;
 		});

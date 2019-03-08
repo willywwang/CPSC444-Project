@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
 	searchFocused: Boolean = false;
 	searchedName: String;
 	newJob: any = {};
+	skill: string;
+	interest: string;
 	private sub: any;
 
 	constructor(private router: Router, private route: ActivatedRoute) {
@@ -154,7 +156,7 @@ export class ProfileComponent implements OnInit {
 		}];
 
 		var user = JSON.parse(localStorage.getItem('user'));
-		this.loggedInUser = localStorage.getItem('loggedInId');
+		this.loggedInUser = parseInt(localStorage.getItem('loggedInId'));
 		this.members.push(user);
 	}
 
