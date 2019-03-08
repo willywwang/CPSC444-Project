@@ -42,11 +42,6 @@ const routes: Routes = [
             loadChildren: '../tab4/tab4.module#Tab4PageModule'
           }
         ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
       }
     ]
   }

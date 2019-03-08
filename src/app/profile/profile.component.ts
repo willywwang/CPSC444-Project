@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NavController } from '@ionic/angular';
 
 @Component({
 	selector: 'app-profile',
@@ -23,7 +24,7 @@ export class ProfileComponent implements OnInit {
 	interest: string;
 	private sub: any;
 
-	constructor(private router: Router, private route: ActivatedRoute) {
+	constructor(public navCtrl: NavController, private router: Router, private route: ActivatedRoute) {
 		this.members = [
 		{	
 			id: 1,
