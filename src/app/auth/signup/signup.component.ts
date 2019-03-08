@@ -63,6 +63,7 @@ export class SignupComponent implements OnInit {
 
 	save() {
 		localStorage.setItem('user', JSON.stringify(this.profile));
+		sessionStorage.setItem('loggedInId', '99');
 		this.router.navigate(['/tabs']);
 	}
 }
