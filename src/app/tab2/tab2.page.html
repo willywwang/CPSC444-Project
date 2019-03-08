@@ -37,7 +37,7 @@
 <!-- checkmark x -->
 <ion-content *ngIf="mode==2">
 	<ion-card style="transform:translateY(50%);">
-		<div style="height:225px;overflow:hidden">
+		<div style="height:225px;overflow:hidden" routerLink="{{'/profile/' + mentor.id}}">
 			<img src="{{mentor.img}}" style="filter: blur(2px) opacity(80%);">
 		</div>
 		<div style="position:absolute;top:0%;width:100%;text-align:center">
@@ -51,7 +51,7 @@
 		</div>
 		<ion-card-content style="padding: 0" *ngIf="mentor.id != -1">
 			<ion-buttons style="padding: 10px">
-				<ion-button style="width:50%;border-right:1px solid #e5e3e3">
+				<ion-button style="width:50%;border-right:1px solid #e5e3e3" routerLink="{{'/profile/' + mentor.id}}">
 					<ion-icon name="checkmark"></ion-icon>
 				</ion-button>
 				<ion-button style="width:50%" (click)="switchMentors()">
@@ -67,7 +67,7 @@
 		<ion-row>
 			<ion-row dragula="MENTORS" [(dragulaModel)]="subsetMentors" style="width:100%">
 				<ion-col size="6" *ngFor="let mentor of subsetMentors">
-					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto">
+					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto" routerLink="{{'/profile/' + mentor.id}}">
 						<img src="{{mentor.img}}"/>
 					</ion-avatar>
 				</ion-col>
@@ -93,7 +93,7 @@
 		<ion-row>
 			<ion-row>
 				<ion-col size="6" *ngFor="let mentor of favorites">
-					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto">
+					<ion-avatar style="width:150px;height:150px;margin-left:auto;margin-right:auto" routerLink="{{'/profile/' + mentor.id}}">
 						<img src="{{mentor.img}}"/>
 					</ion-avatar>
 				</ion-col>

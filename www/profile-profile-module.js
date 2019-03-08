@@ -181,7 +181,7 @@ var ProfileComponent = /** @class */ (function () {
             }
         ];
         var user = JSON.parse(localStorage.getItem('user'));
-        this.loggedInUser = parseInt(localStorage.getItem('loggedInId'));
+        this.loggedInUser = parseInt(sessionStorage.getItem('loggedInId'));
         this.members.push(user);
     }
     ProfileComponent.prototype.ngOnInit = function () {

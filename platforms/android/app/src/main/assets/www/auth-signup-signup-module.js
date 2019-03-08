@@ -86,6 +86,7 @@ var SignupComponent = /** @class */ (function () {
     };
     SignupComponent.prototype.save = function () {
         localStorage.setItem('user', JSON.stringify(this.profile));
+        sessionStorage.setItem('loggedInId', '99');
         this.router.navigate(['/tabs']);
     };
     SignupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

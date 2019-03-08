@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
 	searchFocused: Boolean = false;
 	searchedName: String;
 	newJob: any = {};
+	chatRoute: string;
 	skill: string;
 	interest: string;
 	private sub: any;
@@ -157,7 +158,6 @@ export class ProfileComponent implements OnInit {
 
 		var user = JSON.parse(localStorage.getItem('user'));
 		this.loggedInUser = parseInt(sessionStorage.getItem('loggedInId'));
-		console.log(sessionStorage.getItem('loggedInId'));
 		this.members.push(user);
 	}
 
@@ -171,6 +171,7 @@ export class ProfileComponent implements OnInit {
 
 			this.searchedName = this.profile.name;
 			this.searchChanged();
+			this.chatRoute = '/chat/' + this.id;
 		});
 	}
 

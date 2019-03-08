@@ -55,6 +55,12 @@
 				<span style="margin:0;font-size:0.8em">{{profile.bio}}</span>
 			</ion-col>
 		</ion-row>
+		<ion-buttons style="padding-bottom:10px" *ngIf="id !== loggedInUser">
+			<ion-button style="border: 1px solid #b0a8a8;margin-left:auto" routerLink="{{chatRoute}}">
+				Message Mentor
+				<ion-icon name="chatboxes" slot="start"></ion-icon>
+			</ion-button>
+		</ion-buttons>
 		<div class="seperator"></div>
 		<ion-row style="padding-left:10px;padding-top:5px">
 			<ion-col size="12">
