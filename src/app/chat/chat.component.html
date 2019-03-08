@@ -19,11 +19,11 @@
 <ion-content>
 	<ion-list>
 		<ion-item *ngFor="let message of filteredMessages" lines="none">
-			<ion-avatar slot="{{message.from == 99 ? 'end' : 'start'}}">
-				<img src="{{message.from == 99 ? members[members.length - 1].img : members[message.from-1].img}}"/>
+			<ion-avatar slot="{{message.from == loggedInUser ? 'end' : 'start'}}">
+				<img src="{{message.from == loggedInUser ? img : members[message.from-1].img}}"/>
 			</ion-avatar>
 			<ion-label text-wrap>
-				<div style="border-radius:1.3rem;" [ngClass]="{ 'mentor-chat': message.from != 99, 'mentee-chat': message.from == 99}">
+				<div style="border-radius:1.3rem;" [ngClass]="{ 'mentor-chat': message.from != loggedInUser, 'mentee-chat': message.from == loggedInUser}">
 					<div style="margin:0 auto;width:85%;padding:5px 0">
 						<span style="padding:5px 0">{{message.text}}</span>
 					</div>

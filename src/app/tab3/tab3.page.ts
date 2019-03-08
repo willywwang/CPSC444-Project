@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-	public mentors: Array<any> = [];
+	mentors: Array<any> = [];
+	route: string;
+	img: string;
+	loggedInUser: number;
 
 	constructor(private router: Router) {
 		this.mentors = [
@@ -46,6 +49,10 @@ export class Tab3Page {
 			message: 'When you have time, let\'s arrange a time and date to meet.',
 			img: '../../assets/photos/bruce-willis.jpg'
 		}];
+
+		this.loggedInUser = sessionStorage.getItem('loggedInId');
+		this.route = '/profile/' + this.loggedInUser;
+		this.img = this.loggedInUser == 1 ? '../../assets/photos/jeffrey-parkhouse.jpg' : '../../assets/photos/user.png';
 	}
 
 	openChat(mentor) {

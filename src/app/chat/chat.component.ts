@@ -13,6 +13,9 @@ export class ChatComponent implements OnInit {
 	id: Number;
 	member: any;
 	messageText: string;
+	img: string;
+	loggedInUser: number;
+
 	private sub: any;
 
 	constructor(private route: ActivatedRoute) {
@@ -136,11 +139,14 @@ export class ChatComponent implements OnInit {
 		var user = JSON.parse(localStorage.getItem('user'));
 		this.members.push(user);
 
+		this.loggedInUser = sessionStorage.getItem('loggedInId');
+		this.img = this.loggedInUser == 1 ? '../../assets/photos/jeffrey-parkhouse.jpg' : '../../assets/photos/user.png';
+
 		this.messages = [
 		{
 			id: 17,
 			chatId: 0,
-			from: 99,
+			from: this.loggedInUser,
 			text: 'Hi Pierre, would you be free to meet up on Saturday?'
 		},
 		{
@@ -176,7 +182,7 @@ export class ChatComponent implements OnInit {
 		var newMessage: any = {
 			id: this.id,
 			chatId: this.messages[this.messages.length - 1].chatId + 1,
-			from: 99,
+			from: this.loggedInUser,
 			text: this.messageText
 		};
 

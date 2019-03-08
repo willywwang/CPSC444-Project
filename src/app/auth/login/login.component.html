@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+    	Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+	<div style="display:flex;align-items:center;transform:translateY(33%)">
+		<img style="margin-left:auto;margin-right:auto;" src="../../../assets/photos/orca.png"/>
+	</div>
+	<ion-grid style="transform:translateY(75%)">
+		<ion-row style="padding-bottom:7px" *ngIf="loginError">
+			<div style="text-align:center;width:100%">
+				<span>Your password or username is incorrect</span>
+			</div>
+		</ion-row>
+		<ion-row>
+			<div style="width:67%;margin-left:auto;margin-right:auto">
+				<ion-input class="form-input" [(ngModel)]="username" placeholder="Username"></ion-input>
+			</div>
+		</ion-row>
+		<ion-row style="padding-top:10px">
+			<div style="width:67%;margin-left:auto;margin-right:auto">
+				<ion-input class="form-input" [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
+			</div>
+		</ion-row>	
+		<ion-row style="padding-top:15px">
+			<ion-buttons style="margin-left:auto;margin-right:auto">
+				<ion-button class="action-button" (click)="login()">
+					Login
+				</ion-button>
+			</ion-buttons>
+		</ion-row>
+	</ion-grid>
+</ion-content>

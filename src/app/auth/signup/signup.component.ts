@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 	profile: any = {
 		id: 99,
-		img: '../../assets/photos/user.png',
+		img: '../../../assets/photos/user.png',
 		skills: [],
 		interests: [],
 		jobs: []
@@ -49,8 +49,7 @@ export class SignupComponent implements OnInit {
 	}
 
 	addJob() {
-		this.job.img = '../../assets/photos/company.png';
-		var startDate = new Date(this.job.start);
+		this.job.img = '../../../assets/photos/company.png';
 		this.job.dates = this.job.start + ' - ' + this.job.end;
 		this.profile.jobs.push(this.job);
 		this.job = {};

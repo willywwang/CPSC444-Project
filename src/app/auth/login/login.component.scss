@@ -1,19 +1,17 @@
-.seperator {
-	width: 100%;
-	height: 1px;
-	background-color: #e5e3e3;
+.login-page {
+	background-color: #1474a4 !important;
+}
+
+.form-input {
+	background: white;
+	color: black;
+	border-radius: 1.3em;
 }
 
 ion-input {
-	--padding-start: 0px;
-}
-
-.a ion-item {
-	--padding-start: 0px;
-}
-
-ion-datetime {
-	--padding-start: 0px;
+	--padding-start: 15px;
+	--padding-end: 15px;
+	--border-radius: 1.3em;
 }
 
 .action-button {
@@ -24,10 +22,10 @@ ion-datetime {
 	height: 40px;
 	padding-top: 12px;
 	padding-bottom: 12px;
+	width: 150px;
 	margin-left:auto;
 	margin-right:auto;
 	color: white;
 	font-family: 'Open Sans', san-serif;
 	border-radius: 1.3em;
-	padding-right:5px;
 }

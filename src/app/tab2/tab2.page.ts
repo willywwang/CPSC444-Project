@@ -12,12 +12,15 @@ export class Tab2Page {
 	public mentors: Array<any> = [];
 	subsetMentors: Array<any> =[];
 	mentor: any;
+	route: string;
+	img: string;
 	index: number = 0;
 	sliceIndex: number = 0;
 	mode: number = 1;
 	subs = new Subscription();
 	favorites: Array<any> = [];
 	garbage: Array<any> = [];
+	loggedInUser: number;
 	finishedSearch: boolean = false;
 
 	constructor(private router: Router, private dragulaService: DragulaService) {
@@ -153,9 +156,17 @@ export class Tab2Page {
 			img: '../../assets/photos/sofia-gomez.jpg'
 		}];
 
+		this.loggedInUser = sessionStorage.getItem('loggedInId');
+		this.mentors = this.mentors.filter((mentor) => {
+			return mentor.id != this.loggedInUser;
+		});
+
 		this.mentor = this.mentors[this.index];
 		this.subsetMentors = this.mentors.slice(this.sliceIndex, this.sliceIndex+4);
 		this.sliceIndex += 4;
+
+		this.route = '/profile/' + this.loggedInUser;
+		this.img = this.loggedInUser == 1 ? '../../assets/photos/jeffrey-parkhouse.jpg' : '../../assets/photos/user.png';
 
 		this.dragulaService.createGroup('MENTORS', {
 			moves: function (el: any, container: any, handle: any): any {

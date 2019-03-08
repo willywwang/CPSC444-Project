@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProfileComponent implements OnInit {
 	id: number;
+	loggedInUser: number;
 	profile: any;
 	editProfile: any;
 	members: Array<any> = [];
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
 	isEditing: Boolean = false;
 	searchFocused: Boolean = false;
 	searchedName: String;
+	newJob: any = {};
 	private sub: any;
 
 	constructor(private router: Router, private route: ActivatedRoute) {
@@ -152,6 +154,7 @@ export class ProfileComponent implements OnInit {
 		}];
 
 		var user = JSON.parse(localStorage.getItem('user'));
+		this.loggedInUser = localStorage.getItem('loggedInId');
 		this.members.push(user);
 	}
 
@@ -213,6 +216,45 @@ export class ProfileComponent implements OnInit {
 
 	cancelEdit() {
 		this.isEditing = false;
+	}
+
+	addJob() {
+		this.newJob.img = '../../assets/photos/company.png';
+		this.newJob.dates = this.newJob.start + ' - ' + this.newJob.end;
+		this.editProfile.jobs.push(this.newJob);
+		this.newJob = {};
+	}
+
+	removeJob(removedJob: any) {
+		this.editProfile.jobs = this.editProfile.jobs.filter((job) => {
+			return removedJob.title != job.title && removedJob.company != job.company;
+		});
+	}
+
+	addSkill() {
+		if (this.skill && this.skill.trim() != '') {
+			this.editProfile.skills.push(this.skill);
+			this.skill = null;
+		}
+	}
+
+	removeSkill(removedSkill: string) {
+		this.editProfile.skills = this.editProfile.skills.filter((skill) => {
+			return skill != removedSkill;
+		});
+	}
+
+	addInterest() {
+		if (this.interest && this.interest.trim() != '') {
+			this.editProfile.interests.push(this.interest);
+			this.interest = null;
+		}
+	}
+
+	removeInterest(removedInterest: string) {
+		this.editProfile.interests = this.editProfile.interests.filter((interest) => {
+			return interest != removedInterest;
+		});
 	}
 
 	save() {
