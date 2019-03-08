@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
 			sessionStorage.setItem('loggedInId', '1');
 
 			setTimeout(function() {
-				that.router.navigate(['/tabs']);
+				that.router.navigate(['/tabs/tab1']);
 			}, 500);
 			return;
 		} else if (this.username.toLowerCase() == user.username.toLowerCase() && this.password == user.password) {
 			sessionStorage.setItem('loggedInId', '99');
 			setTimeout(function() {
-				that.router.navigate(['/tabs']);
+				that.router.navigate(['/tabs/tab1']);
 			}, 500);
 			return;
 		}

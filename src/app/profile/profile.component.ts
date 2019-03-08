@@ -264,6 +264,8 @@ export class ProfileComponent implements OnInit {
 
 	save() {
 		localStorage.setItem('user', JSON.stringify(this.editProfile));
+		this.profile = JSON.parse(JSON.stringify(this.editProfile));
+		this.isEditing = false;
 	}
 
 }
