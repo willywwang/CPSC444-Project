@@ -8,7 +8,7 @@ export class MentorService {
   constructor() { }
 
   getMentors(filter: string) {
-  		var members = [
+  		var members: Array<any> = [
 		{	
 			id: 1,
 			name: 'Jeffrey Parkhouse',
@@ -41,7 +41,7 @@ export class MentorService {
 			members[0] = user;
 		}
 
-		var mode1 = [
+		var mode1: Array<any> = [
 		{	
 			id: 13,
 			name: 'Nelson Power',
@@ -159,7 +159,7 @@ export class MentorService {
 			match: 20
 		}];
 
-		var mode2 = [
+		var mode2: Array<any> = [
 		{	
 			id: 10,
 			name: 'Jordan Wilde',
@@ -268,7 +268,7 @@ export class MentorService {
 			match: 20
 		}];
 
-		var mode3 = [
+		var mode3: Array<any> = [
 		{
 			id: 20,
 			name: '',
@@ -319,7 +319,7 @@ export class MentorService {
 		},
 		{	
 			id: 24,
-			name: 'Christian Cooke',
+			name: '',
 			job: 'Technology Business Analyst at Deloitte',
 			education: 'University of British Columbia',
 			bio: '',
@@ -331,7 +331,7 @@ export class MentorService {
 		},
 		{	
 			id: 25,
-			name: 'Christine Lee',
+			name: '',
 			job: 'User Experience Designer at Clio',
 			education: 'Simon Fraser University',
 			bio: '',
@@ -343,7 +343,7 @@ export class MentorService {
 		},
 		{	
 			id: 26,
-			name: 'Cindy Trac',
+			name: '',
 			job: 'Technology Consultant at KPMG',
 			education: 'University of British Columbia',
 			bio: '',
@@ -355,7 +355,7 @@ export class MentorService {
 		},
 		{	
 			id: 27,
-			name: 'Citra Ult',
+			name: '',
 			job: 'Biomedical Engineer at Vancouver General Hospital',
 			education: 'University of British Columbia',
 			bio: '',
@@ -368,7 +368,7 @@ export class MentorService {
 		},
 		{	
 			id: 28,
-			name: 'Hanah Afro',
+			name: '',
 			job: 'Personal Trainer at Goodlife Fitness',
 			education: 'University of British Colubmia',
 			bio: '',
@@ -380,7 +380,7 @@ export class MentorService {
 		},
 		{	
 			id: 29,
-			name: 'Jonathan Habibi',
+			name: '',
 			job: 'Sales Consultant at Meltware AI',
 			education: 'Simon Fraser University',
 			bio: '',
@@ -392,7 +392,7 @@ export class MentorService {
 		}];
 
 		if (filter === 'all') {
-			return members.concat(mode1).concat(mode2).concat(mode3);
+			return members.concat(mode1, mode2, mode3);
 		} else if (filter === 'mode1') {
 			return mode1;
 		} else if (filter === 'mode2') {

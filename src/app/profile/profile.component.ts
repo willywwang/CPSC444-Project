@@ -26,8 +26,17 @@ export class ProfileComponent implements OnInit {
 	private sub: any;
 
 	constructor(public navCtrl: NavController, private router: Router, private route: ActivatedRoute, private mentorService: MentorService) {
-		this.members = mentorService.getMentors('all');
-		console.log(this.members);
+		this.members = mentorService.getMentors('all').sort((mentor1, mentor2) => {
+			if (mentor1.name < mentor2.name) {
+				return -1;
+			}
+
+			if (mentor1.name > mentor2.name) {
+				return 1;
+			}
+
+			return 0;
+		});
 	}
 
 	ngOnInit() {
