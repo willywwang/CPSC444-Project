@@ -36,11 +36,11 @@
 </ion-content>
 <!-- checkmark x -->
 <ion-content *ngIf="mode==2">
-	<ion-card style="transform:translateY(50%);">
-		<div style="height:225px;overflow:hidden" routerLink="{{'/profile/' + mentor.id}}">
-			<img src="{{mentor.img}}" style="filter: blur(2px) opacity(80%);">
+	<ion-card style="transform:translateY(1%);">
+		<div style="height:425px;overflow:hidden" routerLink="{{'/profile/' + mentor.id}}">
+			<img src="{{mentor.img}}" style="filter: blur(1px) opacity(50%);">
 		</div>
-		<div style="position:absolute;top:20%;width:100%;text-align:center">
+		<div style="position:absolute;bottom:15%;width:100%;text-align:center;text-shadow: 0 0 20px #fff">
 			<div style="padding-left:15px;padding-right:15px">
 				<h2 style="color:black;font-weight:750;font-family: 'Varela Round', sans-serif;margin-bottom:0">{{mentor.name}}</h2>
 				<h3 style="color:black;font-weight:500;font-family: 'Varela Round', sans-serif;margin-top:5px">{{mentor.job}}</h3>
