@@ -14,6 +14,7 @@ export class Tab2Page {
 	mentors2: Array<any> = [];
 	mentors3: Array<any> = [];
 	subsetMentors: Array<any> =[];
+	remainingMentors: Array<any> = [];
 	mentor: any;
 	route: string;
 	img: string;
@@ -50,8 +51,7 @@ export class Tab2Page {
 
 		this.mentor = this.mentors2[this.index];
 		this.subsetMentors = this.mentors3.slice(this.sliceIndex, this.sliceIndex+4);
-		this.sliceIndex += 3;
-
+		this.sliceIndex += 4;
 
 		this.dragulaService.createGroup('MENTORS', {
 			moves: function (el: any, container: any, handle: any): any {
@@ -65,9 +65,9 @@ export class Tab2Page {
 
 		this.subs.add(this.dragulaService.drop("MENTORS")
 			.subscribe(({ name, el, target, source, sibling }) => {
-				if (this.sliceIndex < 9 && this.subsetMentors.length == 0) {
-					this.subsetMentors = this.mentors3.slice(this.sliceIndex, this.sliceIndex+4);
-					this.sliceIndex += 4;
+				if (this.sliceIndex < 9 && this.subsetMentors.length < 4) {
+					this.subsetMentors.push(this.mentors3[this.sliceIndex]);
+					this.sliceIndex += 1;
 				} else if (this.sliceIndex >= 9 && this.subsetMentors.length == 0) {
 					this.finishedSearch = true;
 				}
