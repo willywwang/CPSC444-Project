@@ -57,8 +57,21 @@ export class MentorService {
 				img: '../../assets/photos/hootsuite-logo.png',
 				title: 'Intermediate Software Engineer',
 				company: 'Hootsuite',
-				dates: 'Sept. 2017 - Mar. 2019'
-			}],
+				dates: 'Sept. 2017 - Current'
+			},
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Intermediate Full Stack Engineer',
+				company: 'Amazon',
+				dates: 'Sept. 2016 - Aug. 2017'
+			},
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Entry Software Developer',
+				company: 'Google',
+				dates: 'Sept. 2011 - Aug. 2016'
+			}
+			],
 			match: 97
 		},
 		{	
@@ -71,6 +84,13 @@ export class MentorService {
 			verified: true,
 			skills: ['Software Engineering', 'Scrum', 'Code Testing'],
 			interests: ['Hiking', 'Reading'],
+			jobs: [
+			{	
+				img: '../../assets/photos/blank.png',
+				title: 'Junior Software Engineer',
+				company: 'Tableau',
+				dates: 'Sept 2018 - Current'
+			}],
 			match: 90
 		},
 		{	
@@ -83,6 +103,25 @@ export class MentorService {
 			verified: true,
 			skills: ['Project Management', 'Product Management', 'Leadership', 'Communication'],
 			interests: ['Coffee', 'Dancing', 'Singing'],
+			jobs: [
+			{	
+				img: '../../assets/photos/blank.png',
+				title: 'Technical Product Manager',
+				company: 'SAP',
+				dates: 'July 2017 - Current'
+			},
+			{	
+				img: '../../assets/photos/blank.png',
+				title: 'Marketing Manager',
+				company: 'RBC',
+				dates: 'March 2015 - June 2016'
+			},
+			{	
+				img: '../../assets/photos/blank.png',
+				title: 'Junior UX & Front-End Engineer',
+				company: 'BuildDirect',
+				dates: 'July 2013 - Feb. 2015'
+			}],
 			match: 85
 		},
 		{	
@@ -95,6 +134,13 @@ export class MentorService {
 			verified: true,
 			skills: ['Consulting', 'Project Management', 'Communication', 'Big Data'],
 			interests: ['Mountaineering', 'Ski Touring', 'Running'],
+			jobs: [
+			{	
+				img: '../../assets/photos/blank.png',
+				title: 'Business Analyst',
+				company: 'Deloitte',
+				dates: 'Nov. 2012 - Current'
+			}],
 			match: 55
 		},
 		{	
@@ -107,6 +153,13 @@ export class MentorService {
 			verified: false,
 			skills: ['Prototyping', 'Interaction Design', 'Prototype Testing', 'Front-end Development'],
 			interests: ['Reading', 'Drawing', 'Cycling'],
+			jobs: [
+			{	
+				img: '../../assets/photos/blank.png',
+				title: 'UX Designer',
+				company: 'Clio',
+				dates: 'July 2015 - Current'
+			}],
 			match: 55
 		},
 		{	
@@ -119,6 +172,14 @@ export class MentorService {
 			verified: true,
 			skills: ['Consulting', 'Project Management', 'Communication', 'Big Data'],
 			interests: ['Running', 'Swimming', 'Cycling'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Technology Consultant',
+				company: 'KPMG, SAP & so many more',
+				dates: 'Jan. 2005 - Current'
+			}
+			],
 			match: 55
 		},
 		{	
@@ -170,6 +231,19 @@ export class MentorService {
 			verified: true,
 			skills: ['Software Engineering', 'Algorithms', 'Communication', 'Scrum'],
 			interests: ['Graphic Design', 'Special FX'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Senior Software Engineer',
+				company: 'Amazon',
+				dates: 'Jan. 2012 - Current'
+			},
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Research Assistant - Masters in web-technology user experience',
+				company: 'Capilano University',
+				dates: 'Jan. 2010 - Dec. 2011'
+			}],
 			match: 97,
 		},
 		{	
@@ -182,6 +256,13 @@ export class MentorService {
 			img: '../../assets/photos/karen-bertini.jpg',
 			skills: ['Software Engineering', 'Scrum', 'Code Testing'],
 			interests: ['Bouldering', 'Reading', 'Ping Pong'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Junior Software Engineer',
+				company: 'Tableau',
+				dates: 'June 2017 - Current'
+			}],
 			match: 90
 		},
 		{	
@@ -194,6 +275,13 @@ export class MentorService {
 			img: '../../assets/photos/mohammed-aryan.jpg',
 			skills: ['Project Management', 'Product Management', 'Leadership', 'Communication'],
 			interests: ['Fine Coffee', 'Cycling'],
+			jobs: [			
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Technical Product Manager',
+				company: 'Microsoft',
+				dates: 'Oct. 2017 - Current'
+			}],
 			match: 85
 		},
 		{	
@@ -206,6 +294,13 @@ export class MentorService {
 			img: '../../assets/photos/phanuel-smith.jpg',
 			skills: ['Consulting', 'Project Management', 'Communication', 'Big Data'],
 			interests: ['Magic and illusions', 'Card tricks'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Technology Business Analyst',
+				company: 'Deloitte',
+				dates: 'Aug. 2015 - Current'
+			}],
 			match: 55
 		},
 		{	
@@ -218,6 +313,13 @@ export class MentorService {
 			img: '../../assets/photos/sally-kim.jpg',
 			skills: ['Prototyping', 'Interaction Design', 'Prototype Testing', 'Front-end Development'],
 			interests: ['Oil painting', 'Watercolour', 'Photography'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'User Experience Designer',
+				company: 'Hubly',
+				dates: 'Feb. 2014 - Current'
+			}],
 			match: 55
 		},
 		{	
@@ -230,6 +332,13 @@ export class MentorService {
 			img: '../../assets/photos/sofia-gomez.jpg',
 			skills: ['Consulting', 'Project Management', 'Communication', 'Big Data'],
 			interests: ['Running', 'Crossfit', 'Spin class'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Technology Consultant',
+				company: 'KMPG',
+				dates: 'August 2008 - Current'
+			}],
 			match: 55
 		},
 		{
@@ -280,18 +389,44 @@ export class MentorService {
 			img: '../../assets/photos/zach-cox.jpg',
 			skills: ['Software Engineering', 'Algorithms', 'Communication', 'Scrum'],
 			interests: ['DJ', 'Audiophile', 'Voice acting'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Software Engineer',
+				company: 'PayByPhone',
+				dates: 'Dec. 2016 - Current'
+			},
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Full Stack Engineer',
+				company: 'Hootsuite',
+				dates: 'Aug. 2015 - Nov. 2016'
+			},
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Junior Front End Engineer',
+				company: 'CockroachDB',
+				dates: 'Sept. 2014 - July 2015'
+			}],
 			match: 97
 		},
 		{
 			id: 21,
 			name: 'Holly Saint',
-			job: 'Junior Software Engineer at QilkView',
+			job: 'Junior Software Engineer at QlikView',
 			education: 'University of British Columbia',
 			verified: true,
 			bio: 'I\'m just getting the hang of things myself, but I have some great tips for transitioning from university to a full time career, with your next steps to personal growth!',
 			img: '../../assets/photos/holly-saint.jpg',
 			skills: ['Software Engineering', 'Scrum', 'Code Testing'],
 			interests: ['Competitive Gaming', 'VR development', 'Online Streaming'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Junior Software Engineer',
+				company: 'QilkView',
+				dates: 'July 2018 - Current'
+			}],
 			match: 90
 		},
 		{
@@ -304,6 +439,19 @@ export class MentorService {
 			img: '../../assets/photos/lisa-smith.jpg',
 			skills: ['Project Management', 'Product Management', 'Leadership', 'Communication'],
 			interests: ['Singing', 'Guitar', 'Composer'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Technical Product Manager',
+				company: 'Salesforce',
+				dates: 'Aug. 2015 - Current'
+			},
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Assistant Product Manager',
+				company: 'SAP',
+				dates: 'July 2014 - July 2015'
+			}],
 			match: 85
 		},
 		{
@@ -316,6 +464,13 @@ export class MentorService {
 			img: '../../assets/photos/alexis-ann.jpg',
 			skills: ['Consulting', 'Project Management', 'Communication', 'Big Data'],
 			interests: ['Tennis', 'Badminton'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Technical Business Analyst',
+				company: 'Boston Consulting Group',
+				dates: 'Current'
+			}],
 			match: 55
 		},
 		{	
@@ -328,6 +483,13 @@ export class MentorService {
 			verified: false,
 			skills: ['Prototyping', 'Interaction Design', 'Prototype Testing', 'Front-end Development'],
 			interests: ['Karate', 'Kungfu movies', 'Asian dramas'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'User Experience Designer',
+				company: 'LawPay',
+				dates: 'Sept. 2018 - Current'
+			}],
 			match: 55
 		},
 		{	
@@ -340,6 +502,13 @@ export class MentorService {
 			verified: true,
 			skills: ['Consulting', 'Project Management', 'Communication', 'Big Data'],
 			interests: ['Swimming', 'Water Polo'],
+			jobs: [
+			{
+				img: '../../assets/photos/blank.png',
+				title: 'Technology Consultant',
+				company: 'McKinsey and Company',
+				dates: 'July 2008 - Current'
+			}],
 			match: 55
 		},
 		{	
