@@ -59,6 +59,9 @@
 				</ion-button>
 			</ion-buttons>
 		</ion-card-content>
+		<ion-button *ngIf="finishedSearchMode2" style="width:100%;border-right:1px solid #e5e3e3" (click)="refreshMentors()">
+			<ion-icon name="refresh"></ion-icon>
+		</ion-button>
 	</ion-card>
 </ion-content>
 <!-- show 6 circles drag and drop -->

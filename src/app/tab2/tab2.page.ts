@@ -26,6 +26,7 @@ export class Tab2Page {
 	favorites: Array<any> = [];
 	garbage: Array<any> = [];
 	loggedInUser: number;
+	finishedSearchMode2: boolean = false;
 	finishedSearch: boolean = false;
 
 	constructor(private router: Router, private dragulaService: DragulaService, private mentorService: MentorService, private toastController: ToastController) {
@@ -76,15 +77,15 @@ export class Tab2Page {
 		);
 	}
 
-  async presentToastCircle() {
-    const toast = await this.toastController.create({
-      message: 'Drag the circles!',
-      showCloseButton: true,
-      position: 'bottom',
-      closeButtonText: 'Got it!'
-    });
-    toast.present();
-  }
+	async presentToastCircle() {
+		const toast = await this.toastController.create({
+		  message: 'Drag the circles!',
+		  showCloseButton: true,
+		  position: 'bottom',
+		  closeButtonText: 'Got it!'
+		});
+		toast.present();
+	}
 
 	switchMode() {
 		this.mode++;
@@ -107,10 +108,21 @@ export class Tab2Page {
 			this.mentor = {};
 			this.mentor.name = "No more mentors can be found at the moment.";
 			this.mentor.id = -1;
+			this.finishedSearchMode2 = true;
 			return;
+		}
+		else {
+			this.finishedSearchMode2 = false;
 		}
 
 		this.mentor = this.mentors2[this.index];
+	}
+
+	refreshMentors() {
+		// mode 2
+		this.index = 0;
+		this.mentor = this.mentors2[this.index];
+		this.finishedSearchMode2 = false;
 	}
 
  	shuffle(array) {
