@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DragulaService } from 'ng2-dragula';
 import { MentorService } from '../mentors/mentor.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
 	selector: 'app-tab2',
@@ -27,7 +28,7 @@ export class Tab2Page {
 	loggedInUser: number;
 	finishedSearch: boolean = false;
 
-	constructor(private router: Router, private dragulaService: DragulaService, private mentorService: MentorService) {
+	constructor(private router: Router, private dragulaService: DragulaService, private mentorService: MentorService, private toastController: ToastController) {
 		this.loggedInUser = parseInt(sessionStorage.getItem('loggedInId'));
 		this.route = '/profile/' + this.loggedInUser;
 		this.img = this.loggedInUser == 1 ? '../../assets/photos/jeffrey-parkhouse.jpg' : '../../assets/photos/user.png';
@@ -75,9 +76,21 @@ export class Tab2Page {
 		);
 	}
 
+  async presentToastCircle() {
+    const toast = await this.toastController.create({
+      message: 'Drag the circles!',
+      showCloseButton: true,
+      position: 'bottom',
+      closeButtonText: 'Got it!'
+    });
+    toast.present();
+  }
+
 	switchMode() {
 		this.mode++;
-
+		if (this.mode == 3) {
+			this.presentToastCircle();
+		}
 		if (this.mode > 3) {
 			this.mode = 1;
 		}
