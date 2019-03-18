@@ -75,6 +75,8 @@ export class Tab2Page {
 				}
 			})
 		);
+
+
 	}
 
 	async presentToastCircle() {
@@ -87,13 +89,21 @@ export class Tab2Page {
 		toast.present();
 	}
 
+	disableScrollDrag() {
+		if (document.querySelector('.gu-transit') !== null) {
+			event.preventDefault();
+		}
+	}
+
 	switchMode() {
 		this.mode++;
 		if (this.mode == 3) {
 			this.presentToastCircle();
+			document.addEventListener('touchmove', this.disableScrollDrag, { passive:false });
 		}
 		if (this.mode > 3) {
 			this.mode = 1;
+			document.removeEventListener('touchmove', this.disableScrollDrag);
 		}
 	}
 
